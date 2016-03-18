@@ -3,7 +3,7 @@ MAINTAINER yaasita
 
 # dev
 ADD 02proxy /etc/apt/apt.conf.d/02proxy
-ADD authorized_keys /root/.ssh/authorized_keys
+#ADD authorized_keys /root/.ssh/authorized_keys
 
 #apt
 RUN apt-get update
@@ -28,7 +28,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postfix dovecot-imapd
 
 # ssh
 RUN mkdir /var/run/sshd/ && \
- perl -i -ple 's/^(permitrootlogin\s)(.*)/\1yes/i' /etc/ssh/sshd_config
+ perl -i -ple 's/^(permitrootlogin\s)(.*)/\1yes/i' /etc/ssh/sshd_config && \
+ echo root:root | chpasswd
 
 # squirrelmail
 ADD etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
