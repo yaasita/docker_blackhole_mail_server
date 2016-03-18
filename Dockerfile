@@ -43,6 +43,7 @@ ADD etc/postfix/main.cf /etc/postfix/main.cf
 ADD etc/postfix/domains /etc/postfix/
 ADD etc/postfix/aliases.reg /etc/postfix/
 ADD etc/dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
+ADD etc/squirrelmail/conf.pl /etc/squirrelmail/conf.pl
 
 EXPOSE 22 25 80
 CMD ["/usr/bin/supervisord"]
