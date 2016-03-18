@@ -28,15 +28,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install postfix dovecot-imapd
 
 # ssh
 RUN mkdir /var/run/sshd/ && \
- mkdir /root/.ssh && \
  perl -i -ple 's/^(permitrootlogin\s)(.*)/\1yes/i' /etc/ssh/sshd_config
 
 # squirrelmail
-ADD etc/000-default.conf /etc/apache2/sites-available/000-default.conf
-ADD etc/apache.conf /etc/squirrelmail/apache.conf
+ADD etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
+ADD etc/squirrelmail/apache.conf /etc/squirrelmail/apache.conf
 
 # supervisor
-ADD blackhole.conf /etc/supervisor/conf.d/blackhole.conf
+ADD etc/supervisor/conf.d/blackhole.conf /etc/supervisor/conf.d/blackhole.conf
 
 # mail
 RUN useradd mailuser -m && echo mailuser:mailuser | chpasswd
