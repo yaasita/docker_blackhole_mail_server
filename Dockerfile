@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER yaasita
 
 # dev
-ADD 02proxy /etc/apt/apt.conf.d/02proxy
+#ADD 02proxy /etc/apt/apt.conf.d/02proxy
 #ADD authorized_keys /root/.ssh/authorized_keys
 
 #apt
